@@ -62,7 +62,6 @@ namespace Selector_de_Colores
         private void Button1_Click(object sender, EventArgs e)
         {
             int A, B, C;
-            string AA, BB, CC;
 
             try
             {
@@ -80,11 +79,7 @@ namespace Selector_de_Colores
 
             pictureBox1.BackColor = Color.FromArgb(A, B, C);
 
-            AA = Converters.DecimalToHexadecimal(A);
-            BB = Converters.DecimalToHexadecimal(B);
-            CC = Converters.DecimalToHexadecimal(C);
-
-            label1.Text = AA + BB + CC;
+            label1.Text = Converters.DecimalToHexadecimal(A) + Converters.DecimalToHexadecimal(B) + Converters.DecimalToHexadecimal(C);
         }
 
         #region TextChanged
