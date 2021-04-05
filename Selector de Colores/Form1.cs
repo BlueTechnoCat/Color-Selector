@@ -7,12 +7,25 @@ namespace Selector_de_Colores
 {
     public partial class Form1 : Form
     {
+        private readonly DialogResult dialogResult = new DialogResult();
+
         public Form1()
         {
             InitializeComponent();
-            Text = "Selector de Colores";
+            dialogResult = MessageBox.Show("Do you speak Spanish?","Language",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+           
+            if (dialogResult == DialogResult.Yes)
+            {
+                Text = "Selector de Colores";
+                button1.Text = "Colorear";
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                Text = "Color Selector";
+                button1.Text = "Paint";
+            }
+
             label1.Text = "";
-            button1.Text = "Colorear";
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             MaximizeBox = false;
         }
@@ -70,15 +83,6 @@ namespace Selector_de_Colores
             AA = Converters.DecimalToHexadecimal(A);
             BB = Converters.DecimalToHexadecimal(B);
             CC = Converters.DecimalToHexadecimal(C);
-
-            try
-            {
-                if (Convert.ToInt32(AA) <= 9 || AA == "A" || AA == "B" || AA == "C" || AA == "D" || AA == "E" || AA == "F") { AA = AA.Insert(0, "0"); }
-                if (Convert.ToInt32(BB) <= 9 || BB == "A" || BB == "B" || BB == "C" || BB == "D" || BB == "E" || BB == "F") { BB = BB.Insert(0, "0"); }
-                if (Convert.ToInt32(CC) <= 9 || CC == "A" || CC == "B" || CC == "C" || CC == "D" || CC == "E" || CC == "F") { CC = CC.Insert(0, "0"); }
-            }
-
-            catch (Exception E) { MessageBox.Show(E.ToString()); }
 
             label1.Text = AA + BB + CC;
         }
